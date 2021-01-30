@@ -1,0 +1,27 @@
+{
+	"name": "OpenDataExporter",
+	"description": "Extracts data from open data and stores in JSON file",
+	"version": "1.0.0",
+	"author": {
+		"name": "Devanshika Ghosh",
+		"email": "devanshika4@gmail.com"
+	},
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"typescript": "1.7.5",
+		"web-request": "1.0.7",
+		"cli-progress": "3.8.2"
+	},
+	"engines": {
+		"node": ">= 12.13.1"
+	},
+	"files": [
+		"config.json",
+		"app.js",
+		"modules/WebRequestManager.js",
+		"modules/FileParser.js"
+	]
+}
