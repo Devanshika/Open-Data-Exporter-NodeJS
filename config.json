@@ -1,0 +1,10 @@
+{
+    "request": {
+    "url": "http://api.us.socrata.com/api/catalog/v1",
+    "domains":"data.novascotia.ca",
+    "limit":1000 
+    },
+    "exportPath":"C:\\Socrata To NoSQL\\NodeJS Project\\Open Data",
+    "indexArr" : [241]
+}
+
