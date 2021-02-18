@@ -28,30 +28,26 @@ WebRequestManager.prototype.fetchResouce= async function(){
 
 //this function fetches the dataset and parses it to JSON
 WebRequestManager.prototype.fetchDataset= async function(datasetID){
-    var limitVal = 1000;
-    var curOffset = 0;
-    var dataSetJSON = []
-    console.log();
-    console.log("Dataset Name -" + this.resultDictionary[datasetID]["resource"]["name"]);
-    while(true)
+var limitVal = 1000;
+var curOffset = 0;
+var dataSetJSON = []
+console.log();
+console.log("Dataset Name ="+this.resultDictionary[datasetID]["resource"]["name"]);
+while(true)
+{
+    var dataset= await this.requestModule.get("https://"+this.domain+"/resource/"+datasetID+".json?$limit="+limitVal+"&$offset="+curOffset);
+    var curPageData = JSON.parse(dataset.content);
+    if(curPageData.length <= 0)
     {
-        var dataset= await this.requestModule.get("https://"+this.domain+"/resource/"+datasetID+".json?$limit="+limitVal+"&$offset="+curOffset);
-        var curPageData = JSON.parse(dataset.content);
-        if(curPageData.length <= 0)
-        {
-            break;
-        }
-        else
-        {
-            curOffset += limitVal;
-        }
-        dataSetJSON.push.apply(dataSetJSON,curPageData);
-        if(curOffset >= 1000)
-        {
-            break;
-        }
-    }
-    console.log("Total Rows =" + dataSetJSON.length);
+     break;
+	}
+    else
+    {
+     curOffset += limitVal;
+	}
+    dataSetJSON.push.apply(dataSetJSON,curPageData);
+}
+console.log("Total Rows ="+dataSetJSON.length);
     return dataSetJSON;
 }
 module.exports = WebRequestManager;

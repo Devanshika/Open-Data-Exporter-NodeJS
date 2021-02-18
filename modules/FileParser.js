@@ -17,7 +17,7 @@ function FileParser(file_settings){
 }
 FileParser.prototype.createFile= async function(datafile, fileName){
     var datajson = JSON.stringify(datafile);
-    var fd = this.fs.openSync(this.exportPath+"//"+fileName,'w');
+    var fd = this.fs.openSync(this.exportPath+"\\"+fileName,'w');
     this.fs.writeFileSync(fd,datajson,"utf8");
 }
 module.exports=FileParser;
